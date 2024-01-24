@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container mt-5">
+    <div class="d-lg-flex d-sm-block">
+        <div class="dropdown mt-3">
+            <button class="btn btn-dark dropdown-toggle px-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Quiz Category
+            </button>
+            <ul style="max-height:400px; overflow-y: scroll;" class="dropdown-menu dropdown-menu-dark">
+              {% for cate in category %}
+                <li><a class="dropdown-item" href="{% url "category_slug_quizes" cate.slug %}">{{cate.name}}</a></li>
+              {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="mb-5">    
+            <div class="d-flex flex-wrap justify-content-center">
+            {% for quiz in data %}
+             
+            <a href="{% url "quiz_page" quiz.id %}" style="width:350px;" class="p-3 text-decoration-none">
+                <div style="background-color:#F4F4F4" class="card border-0 rounded-0 shadow rounded-bottom-4">
+                  <div class="p-3">
+                    <div class="">
+                      <div>
+                        <img style="width:285px; height:210px; object-fit: contain;" src="{{quiz.image.url}}" alt="Car Image">
+                      </div>
+                      <div class="p-3 pb-0">
+                        <h5 class="card-title">{{quiz.title}}</h5>
+                        <p class="card-text">{{quiz.description | truncatewords:14 }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+        
+              {% endfor %}
+            </div>
+          </div>
+    </div>
+</section>
+    
+{% endblock content %}

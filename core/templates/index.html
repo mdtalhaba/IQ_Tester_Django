@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .card-style{
+    background-color:#F4F4F4;
+    box-shadow: 4px 4px 8px gray;
+  }
+
+  .card-style:hover{
+    box-shadow: 4px 4px 16px gray;;
+  }
+</style>
+
+<div>
+    <div>
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static "images/banner_1.jpg" %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static "images/banner_4.jpg" %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static "images/banner_5.jpg" %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+</div>
+<section class="container mt-5">
+    <div class="d-lg-flex d-sm-block">
+        <div class="dropdown mt-3">
+            <button class="btn btn-dark dropdown-toggle px-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Quiz Category
+            </button>
+            <ul style="max-height:400px; overflow-y: scroll;" class="dropdown-menu dropdown-menu-dark">
+              {% for cate in category %}
+                <li><a class="dropdown-item" href="{% url "category_slug_home" cate.slug %}">{{cate.name}}</a></li>
+              {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="mb-5">    
+            <div class="d-flex flex-wrap justify-content-center">
+            {% for quiz in data %}
+             
+            <a href="{% url "quiz_page" quiz.id %}" style="width:350px;" class="p-3 text-decoration-none">
+                <div class="card card-style border-0 rounded-0 rounded-bottom-4">
+                  <div class="p-3">
+                    <div class="">
+                      <div>
+                        <img style="width:285px; height:210px; object-fit: contain;" src="{{quiz.image.url}}" alt="Car Image">
+                      </div>
+                      <div class="p-3 pb-0">
+                        <h5 class="card-title">{{quiz.title}}</h5>
+                        <p class="card-text">{{quiz.description | truncatewords:14 }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+        
+              {% endfor %}
+            </div>
+          </div>
+    </div>
+</section>
+<section style="background-color: white;">
+  <div class="row align-items-center container m-auto py-5">
+    <div class="col-lg-6 col-sm-12">
+      <img class="w-75" src="{% static 'images/challange.png' %}" alt="">
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <h1 style="color: #973992;" class="fw-bold mb-4">Challenge Your Mind with our Interactive Quizzes!</h1>
+      <p class="text-secondary">Welcome to our engaging quiz platform, where curiosity meets knowledge! Dive into a wide range of thought-provoking questions that span various subjects. Whether you're a trivia enthusiast or just looking for a fun way to learn, our quizzes are designed to cater to all levels of expertise. Explore topics such as science, history, pop culture, technology, and more. Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way. Join us on this exciting journey of exploration and mental stimulation. Select a quiz, challenge yourself, and enjoy the thrill of acquiring new knowledge. Happy quizzing!</p>
+    </div>
+  </div>
+</section>
+<section class="container my-5">
+  <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible">
+    <ul class="slider-container py-4">
+        <li class="slide-visible">
+            <div class="card shadow h-100">
+                <div class="ratio ratio-16x9">
+                    <img src="{% static "images/slider_1.jpg" %}" class="card-img-top" loading="lazy" alt="...">
+                </div>
+                <div class="card-body p-3 p-xl-5">
+                    <h3 class="card-title h5">See the world with IQ Tester</h3>
+                    <p class="card-text">Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way.</p>
+                    <div><a href="#" class="btn btn-primary">See Details</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="slide-visible">
+            <div class="card shadow h-100">
+                <div class="ratio ratio-16x9">
+                    <img src="{% static "images/slider_2.jpg" %}" class="card-img-top" loading="lazy" alt="...">
+                </div>
+                <div class="card-body p-3 p-xl-5">
+                    <h3 class="card-title h5">Tranquil locations far away with IQ Tester</h3>
+                    <p class="card-text">Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way.</p>
+                    <a href="#" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="card shadow h-100">
+                <div class="ratio ratio-16x9">
+                    <img src="{% static "images/slider_3.jpg" %}" class="card-img-top" loading="lazy" alt="...">
+                </div>
+                <div class="card-body p-3 p-xl-5">
+                    <h3 class="card-title h5">Road trip in the wilderness with IQ Tester</h3>
+                    <p class="card-text">Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way.</p>
+                    <a href="#" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="card shadow h-100">
+                <div class="ratio ratio-16x9">
+                    <img src="{% static "images/slider_4.jpg" %}" class="card-img-top" loading="lazy" alt="...">
+                </div>
+                <div class="card-body  p-3 p-xl-5">
+                    <h3 class="card-title h5">See the hidden lake side with IQ Tester</h3>
+                    <p class="card-text">Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way.</p>
+                    <a href="#" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="card shadow h-100">
+                <div class="ratio ratio-16x9">
+                    <img src="{% static "images/slider_5.jpg" %}" class="card-img-top" loading="lazy" alt="...">
+                </div>
+                <div class="card-body  p-3 p-xl-5">
+                    <h3 class="card-title h5">Up, up, up in the Air with IQ Tester</h3>
+                    <p class="card-text">Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way.</p>
+                    <a href="#" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="card shadow h-100">
+                <div class="ratio ratio-16x9">
+                    <img src="{% static "images/slider_6.jpg" %}" class="card-img-top" loading="lazy" alt="...">
+                </div>
+                <div class="card-body  p-3 p-xl-5">
+                    <h3 class="card-title h5">See a climbers birds view with IQ Tester</h3>
+                    <p class="card-text">Each quiz is crafted to entertain and educate simultaneously. Test your understanding, discover interesting facts, and perhaps even learn something new along the way.</p>
+                    <a href="#" class="btn btn-primary">See Details</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button type="button" class="slider-nav" aria-label="Go left"></button>
+    <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+
+    <div class="slider-indicators">
+        <button class="active" aria-label="Go to slide"></button>
+        <button aria-label="Go to slide"></button>
+        <button aria-label="Go to slide"></button>
+        <button aria-label="Go to slide"></button>
+        <button aria-label="Go to slide"></button>
+    </div>
+</div>
+</section>
+    
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section style="background-color: #EEF5FF; max-width: 1000px;" class="m-auto rounded-4 shadow px-5 py-4 my-4">
+    <div>
+        <h3 class="text-center">{{ quiz.title }}</h3>
+        <span>Total Quiz {{quiz.questions.all|length}}</span>
+        <div style="max-width: 700px;" class="bg-light px-5 py-4 mb-4 m-auto my-2 border border-dark-subtle rounded-4">
+            <h5>{{question.text}}</h5>
+            <div class="p-4">
+                <form method='post'>
+                    {% csrf_token %}
+                    <div class="form-check ps-0">
+                       {% for choice in question.choice.all %}
+                       <div class="form-check ps-0">
+                            
+                            <label class="form-check-label border rounded w-100 p-2 my-2 ps-5 bg-secondary-subtle" for="gridRadios{{choice.id}}">
+                                <input class="form-check-input me-3" type="radio" name="{{question.text}}" id="gridRadios{{choice.id}}" value="{{choice.id}}" {% if ans != None and choice.id == ans.id %} checked {% endif %}>
+                                {{choice.option}}
+                            </label>
+                        </div>
+                       {% endfor %}
+                    </div>    
+                    <input id='timer' type='hidden' name="timer" value="">
+                    {% if ans != None and ans.is_correct == True %}
+                    <h6 class="text-success mt-2 text-center"><span class="fs-5 fw-bold">( {{ans}} )</span> is Correct Answer</h6>
+                    {% elif ans != None and ans.is_correct == False %}
+                    <h6 class="text-danger mt-2 text-center"><span class="fs-5 fw-bold">( {{ans}} )</span> is Wrong Answer</h6>
+                    {% endif %}
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark btn-sm px-5 mt-3">Submit</button>
+                    </div>
+                  </form>
+                {% comment %} Pagination {% endcomment %}
+                <div class="pagination justify-content-center mt-3">
+                    <span class="step-links">
+                        {% if current_page.has_previous %}
+                            <a class="btn btn-outline-dark btn-sm px-5" href="/quiz/{{quiz.id}}/?page={{ current_page.previous_page_number }}">&laquo; Previous</a>
+                        {% endif %}
+                        <span class="current mx-4">
+                            Quiz {{ current_page.number }} of {{ current_page.paginator.num_pages }}.
+                        </span>
+                
+                        {% if current_page.has_next %}
+                            <a class="btn btn-outline-dark btn-sm px-5" href="/quiz/{{quiz.id}}/?page={{ current_page.next_page_number }}">Next &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

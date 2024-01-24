@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="py-4">
+    <div style="max-width: 1200px; background-color: gainsboro;" class="m-auto p-5 my-5 shadow rounded-4">
+        <div style="background-color: white;" class="p-5 rounded-4">
+            <h2 class="text-center mb-4">Quiz History</h2>
+            <table class="table table-bordered border-5 border-secondary-subtle">
+                <thead class="text-center">
+                  <tr>
+                    <th scope="col">Quiz Name</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Given Answer</th>
+                    <th scope="col">Correct/Incorrect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for history in data %}
+                  <tr>
+                    <td class="ps-3">{{history.quiz.title}}</td>
+                    <td>{{history.question.text}}</td>
+                    <td>{{history.selected_choice.option}}</td>
+                    {% if history.selected_choice.is_correct == True %}
+                    <td class="text-success fw-bold text-center">Correct</td>
+                    {% else %}
+                    <td class="text-danger fw-bold text-center">Incorrect</td>
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

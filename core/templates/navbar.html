@@ -1,0 +1,62 @@
+{% load static %}
+<nav class="navbar navbar-dark navbar-expand-lg w-100 z-2" style="position: fixed; top: 0; background-color: #000000">
+    <div class="container">
+      <a class="navbar-brand fs-2 fw-bold me-5" href="{% url "home" %}">IQ <span style="color:#FFB534">Tester</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-item-hover-effect" href="{% url "home" %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item-hover-effect" href="{% url "quizes" %}">Quiz</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link nav-item-hover-effect" href="{% url "quiz_history" %}">Quiz History</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link nav-item-hover-effect" href="{% url "blog" %}">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item-hover-effect" href="{% url "quizes" %}">About Us</a>
+          </li>
+        </ul>
+        <div class="d-flex" role="search">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                    <li class="nav-item me-5">
+                        <span class="nav-link text-light">Welcome :)- {{user.first_name}}</span>
+                    </li>
+                    <li class="nav-item dropdown dropstart">
+                      <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img style="width: 30px;" class="" src="{% static "images/profile.png" %}" alt="">
+                      </a>
+                      <ul style="margin-top: 60px; margin-right: -70px; width: 250px; background-color: black;" class="dropdown-menu dropdown-menu-dark px-3 pb-3">
+                        <li class="d-flex justify-content-center"><img style="width: 50px;" class="my-3" src="{% static "images/profile.png" %}" alt=""></li>
+                        <li><a class="dropdown-item" href="{% url "profile" %}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url "update_info" %}">Update Info</a></li>
+                        <li><a class="dropdown-item" href="#">Leader Bord</a></li>
+                        <li><hr class="dropdown-divider bg-light"></li>
+                        <li><a class="dropdown-item text-light" href="{% url "logout" %}">Log Out</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                        
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url "register" %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url "login" %}">Log In</a>
+                    </li>
+                {% endif %}
+              </ul>
+        </div>
+      </div>
+    </div>
+  </nav>

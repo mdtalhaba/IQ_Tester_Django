@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+  .card-style{
+    background-color:#F4F4F4;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.781);
+  }
+
+  .card-style:hover{
+    box-shadow: 4px 4px 16px black;
+  }
+</style>
+
+<div style="background: linear-gradient(135deg,#973992,#FFB534);">
+  <div style="width: 500px; min-height: 100vh;" class="py-5 m-auto">
+    <div style="background-color: aliceblue;" class="card-style p-5 rounded-3">
+      <h3 class="text-center mb-4">Update Your Information</h3>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <!--{{ form | crispy }}-->
+        {% for fm in form %}
+        <div>
+          {{fm.label_tag}}
+          {{fm}}
+          <p>{{fm.errors | striptags }}</p>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-dark btn-sm px-5 mt-2">Save</button>
+      </form>
+      <br>
+      <a class="btn btn-danger btn-sm px-5" href="">Change Password</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
