@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="bg-light">
+    <div>
+        <div style="max-width: 1000px; margin: auto; padding-top: 100px; padding-bottom: 100px;">
+            <h1 class="display-2 fw-semibold mb-4">Who We Are</h1>
+            <p class="fs-4 text-dark">At IQ Tester, we're not just about quizzes, we're about pushing the limits of your intellect. We believe in the power of curiosity and the thrill of discovery.</p>
+            <p class="fs-4 text-dark">Our quizzes are designed to make you question everything you thought you knew. Get ready to be surprised, challenged, and entertained.</p>
+            <p class="fs-4 text-dark">Join us on a journey of self-discovery and mental acrobatics. Are you ready to test your IQ?</p>
+        </div>
+        <div class="container pb-5">
+            <h1 class="display-2 fw-semibold text-center">Meet Us</h1>
+            <div class="d-flex flex-wrap justify-content-between py-4">
+                <div style="width:300px; text-align: center;">
+                    <img style="width:300px; height:360px; object-fit: cover;" class="rounded-5" src="{% static "images/max.jpeg" %}" alt="">
+                    <h2 class="fw-bold mt-3">Max</h2>
+                    <h4 class="fw-normal">Quiz Master</h4>
+                </div>
+                <div style="width:300px; text-align: center;">
+                    <img style="width:300px; height:360px; object-fit: cover;" class="rounded-5" src="{% static "images/ava.jpeg" %}" alt="">
+                    <h2 class="fw-bold mt-3">Ava</h2>
+                    <h4 class="fw-normal">Question Guru</h4>
+                </div>
+                <div style="width:300px; text-align: center;">
+                    <img style="width:300px; height:360px; object-fit: cover;" class="rounded-5" src="{% static "images/leo.jpeg" %}" alt="">
+                    <h2 class="fw-bold mt-3">Leo</h2>
+                    <h4 class="fw-normal">Brain Teaser</h4>
+                </div>
+                <div style="width:300px; text-align: center;">
+                    <img style="width:300px; height:360px; object-fit: cover;" class="rounded-5" src="{% static "images/zoe.jpeg" %}" alt="">
+                    <h2 class="fw-bold mt-3">Zoe</h2>
+                    <h4 class="fw-normal">Puzzle Whiz</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

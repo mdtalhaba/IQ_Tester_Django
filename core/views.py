@@ -36,7 +36,6 @@ def quizes(req, category_slug = None) :
 
 def quizHistory(req) :
     data = UserResponse.objects.filter(user=req.user)
-    
     return render(req, 'quiz_history.html', {'data' : data})
 
 
@@ -52,7 +51,6 @@ def quiz_page(request, quiz_id):
     page = request.GET.get('page')
     try:
         current_page = paginator.page(page)
-        print(current_page.number)
     except PageNotAnInteger:
         current_page = paginator.page(1)
     except EmptyPage:
@@ -103,6 +101,9 @@ class ProfileView(LoginRequiredMixin, ListView):
 
 class BlogView(TemplateView):
     template_name = 'blog.html'
+
+class AboutUsView(TemplateView):
+    template_name = 'about_us.html'
 
 @login_required(login_url="/login/")
 def updateInfo(req) :

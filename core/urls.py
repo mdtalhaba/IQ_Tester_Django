@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, quizes, quizHistory, activate, updateInfo, quiz_page, UserLoginView, UserLogoutView, RegistrationView, ProfileView, BlogView
+from .views import home, quizes, quizHistory, activate, updateInfo, quiz_page, UserLoginView, UserLogoutView, RegistrationView, ProfileView, BlogView, AboutUsView
 
 urlpatterns = [
     path('', home, name='home'),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('profile/update/', updateInfo, name='update_info'),
     path('quiz/<int:quiz_id>/', quiz_page, name='quiz_page'),
     path('blog/', BlogView.as_view(), name='blog'),
+    path('about_us/', AboutUsView.as_view(), name='about_us'),
 ]
