@@ -18,5 +18,5 @@ To get started with IQ Tester, follow these simple steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/quizbuzz.git
-   cd quizbuzz
+   git clone https://github.com/mdtalhaba/IQ_Tester_Django
+   cd IQ_Tester_Django
