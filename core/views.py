@@ -98,7 +98,7 @@ def updateInfo(req) :
         form = UserUpdateForm(instance=req.user)
     return render(req, 'update_info.html', {'form' : form})
 
-
+@login_required(login_url="/login/")
 def pass_change(req) :
     if req.method == 'POST' :
         pass_change_form = PasswordChangeForm(req.user, data=req.POST)
