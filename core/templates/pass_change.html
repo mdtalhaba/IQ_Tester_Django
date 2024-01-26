@@ -17,11 +17,7 @@
 <div style="background: linear-gradient(135deg,#973992,#FFB534);">
   <div class="container m-auto row align-items-center">
     <div class="col-6">
-      {% if type == 'Log In' %}
-      <img class="w-75" src="{% static "./images/login.png" %}" alt="">
-      {% else %}
-      <img class="w-75" src="{% static "./images/register.png" %}" alt="">
-      {% endif %}
+    
     </div>
     <div class="col-6">
       <div style="width: 500px; background-color: aliceblue;" class="p-5 m-auto card-style rounded-4 my-5">
@@ -36,11 +32,6 @@
             <p>{{fm.errors | striptags }}</p>
            </div>
           {% endfor %}
-          {% if type == 'Log In' %}
-          <small>You don't Have any Account <a href="{% url "register" %}">/Register</a></small>
-          {% else %}
-          <small>Already Have an Account ? <a href="{% url "login" %}">/Log In</a></small>
-          {% endif %}
           <br>
           <button type="submit" class="btn btn-dark btn-sm px-5 mt-2">Submit</button>
         </form>

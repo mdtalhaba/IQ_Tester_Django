@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="py-4">
+    <div style="max-width: 1200px; background: linear-gradient(135deg,#973992,#FFB534)" class="m-auto p-5 my-5 shadow rounded-4">
+        <div style="background-color: white;" class="p-5 rounded-4">
+            <h2 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="text-center mb-4">Leader Board</h2>
+            <table class="table table-bordered border-dark table-striped">
+                <thead class="text-center table-dark">
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quiz Attend</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for leader in data %}
+                  <tr>
+                    <td {% if forloop.counter == 1 %} 
+                    style="background-color: rgb(255, 226, 60);"
+                    {% elif forloop.counter == 2 %}
+                    style="background-color: silver;"
+                    {% elif forloop.counter == 3 %}
+                    style="background-color: rgb(222, 131, 88);"
+                    {% endif %} 
+                    class="text-center">{{ forloop.counter }}</td>
+                    <td {% if forloop.counter == 1 %} 
+                    style="background-color: rgb(255, 226, 60);"
+                    {% elif forloop.counter == 2 %}
+                    style="background-color: silver;"
+                    {% elif forloop.counter == 3 %}
+                    style="background-color: rgb(222, 131, 88);"
+                    {% endif %} 
+                    class="text-center">{{leader.user.first_name}} {{leader.user.last_name}}</td>
+                    <td {% if forloop.counter == 1 %} 
+                    style="background-color: rgb(255, 226, 60);"
+                    {% elif forloop.counter == 2 %}
+                    style="background-color: silver;"
+                    {% elif forloop.counter == 3 %}
+                    style="background-color: rgb(222, 131, 88);"
+                    {% endif %} 
+                    class="text-center">{{leader.quiz_count}}</td>
+                    <td {% if forloop.counter == 1 %} 
+                    style="background-color: rgb(255, 226, 60);"
+                    {% elif forloop.counter == 2 %}
+                    style="background-color: silver;"
+                    {% elif forloop.counter == 3 %}
+                    style="background-color: rgb(222, 131, 88);"
+                    {% endif %} 
+                    class="text-center">{{leader.score}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

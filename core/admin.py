@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import QuizScore
 
-# Register your models here.
+class QuizScoreAdmin(admin.ModelAdmin):
+    list_display = ['user', 'score']
+
+admin.site.register(QuizScore, QuizScoreAdmin)
